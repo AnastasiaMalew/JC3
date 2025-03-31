@@ -1,7 +1,9 @@
 package org.skypro.skyshop.basket;
 
 import org.skypro.skyshop.product.DiscountedProduct;
+import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.SimpleProduct;
 
 public class ProductBasket {
     private final Product[] products;
@@ -30,29 +32,45 @@ public class ProductBasket {
     }
 
     public void printBasketContents() {
+        int specialCount = 0;
         if (costProduct == 0) {
             System.out.println("В корзине пусто");
         } else {
             for (int i = 0; i < costProduct; i++) {
                 System.out.println(products[i].getProduct() + ": " + products[i].getCostProduct());
+                if (products[i].isSpecial()) {
+                    specialCount++;
+                }
             }
             System.out.println("Итого: " + getTotalCost());
+            System.out.println("Количество специальных товаров в корзине: " + specialCount);
         }
     }
+
     public boolean containsProduct(String product) {
         for (int i = 0; i < costProduct; i++) {
-            if
-            (products[i].getProduct().equals(product)) {
+            if (products[i].getProduct().equals(product)) {
                 return true;
             }
         }
         return false;
     }
 
-    public void clearBasket() {
-        for (int i = 0; i <costProduct; i++) {
-            products[i] = null;
-        }
-        costProduct = 0;
+    public static void main(String[] args) {
+        ProductBasket basket = new ProductBasket();
+
+        SimpleProduct apple = new SimpleProduct("Яблоки", 102);
+        SimpleProduct meat = new SimpleProduct("Мясо", 150);
+        DiscountedProduct milk = new DiscountedProduct("Молоко", 10, 115);
+        DiscountedProduct egg = new DiscountedProduct("Яйцо", 15, 54);
+        FixPriceProduct chocolate = new FixPriceProduct("Шоколад");
+
+        basket.addProduct(apple);
+        basket.addProduct(meat);
+        basket.addProduct(milk);
+        basket.addProduct(egg);
+        basket.addProduct(chocolate);
+
+        basket.printBasketContents();
     }
 }

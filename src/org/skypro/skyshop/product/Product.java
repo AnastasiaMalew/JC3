@@ -12,4 +12,6 @@ public abstract class Product {
     public abstract double getCostProduct();
 
     public abstract double getPrice();
+
+    public abstract boolean isSpecial();
 }

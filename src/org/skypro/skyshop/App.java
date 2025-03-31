@@ -8,7 +8,6 @@ import org.skypro.skyshop.product.SimpleProduct;
 
 public class App {
     public static void main(String[] args) {
-            ProductBasket basket = new ProductBasket();
 
             SimpleProduct apple = new SimpleProduct("Яблоки", 102);
             SimpleProduct meat = new SimpleProduct("Мясо", 150);
@@ -16,6 +15,7 @@ public class App {
             DiscountedProduct egg = new DiscountedProduct("Яйцо", 15, 54);
             FixPriceProduct chocolate = new FixPriceProduct("Шоколад");
 
+            ProductBasket basket = new ProductBasket();
             basket.addProduct(apple);
             basket.addProduct(meat);
             basket.addProduct(milk);
@@ -24,4 +24,4 @@ public class App {
 
             basket.printBasketContents();
     }
-    }
+}
