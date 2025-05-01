@@ -1,5 +1,10 @@
 package org.skypro.skyshop.article;
 
+import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.FixPriceProduct;
+import org.skypro.skyshop.product.DiscountedProduct;
+
 public class SearchEngine {
     private Searchable[] searchableItems;
     private int count;
@@ -35,4 +40,3 @@ public class SearchEngine {
         return result;
     }
 }
-

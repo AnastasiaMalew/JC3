@@ -64,4 +64,7 @@ public class ProductBasket {
         basket.printBasketContents();
     }
 
+    public int printContents() {
+        return 0;
+    }
 }
