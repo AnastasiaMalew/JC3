@@ -37,7 +37,6 @@ public class ProductBasket {
             System.out.println("В корзине пусто");
         } else {
             for (int i = 0; i < costProduct; i++) {
-                System.out.println(products[i].getProduct() + ": " + products[i].getCostProduct());
                 if (products[i].isSpecial()) {
                     specialCount++;
                 }
@@ -47,19 +46,10 @@ public class ProductBasket {
         }
     }
 
-    public boolean containsProduct(String product) {
-        for (int i = 0; i < costProduct; i++) {
-            if (products[i].getProduct().equals(product)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static void main(String[] args) {
         ProductBasket basket = new ProductBasket();
 
-        SimpleProduct apple = new SimpleProduct("Яблоки", 102);
+        SimpleProduct apple = new SimpleProduct("Яблоки", 45);
         SimpleProduct meat = new SimpleProduct("Мясо", 150);
         DiscountedProduct milk = new DiscountedProduct("Молоко", 10, 115);
         DiscountedProduct egg = new DiscountedProduct("Яйцо", 15, 54);
@@ -72,5 +62,9 @@ public class ProductBasket {
         basket.addProduct(chocolate);
 
         basket.printBasketContents();
+    }
+
+    public int printContents() {
+        return 0;
     }
 }

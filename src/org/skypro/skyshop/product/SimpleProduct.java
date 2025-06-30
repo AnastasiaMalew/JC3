@@ -8,6 +8,10 @@ public class SimpleProduct extends Product {
         this.price = price;
     }
 
+    public SimpleProduct(String product) {
+        super(product);
+    }
+
     @Override
     public double getCostProduct() {
         return this.price;
