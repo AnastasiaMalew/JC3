@@ -1,6 +1,7 @@
 package org.skypro.skyshop;
 
 
+import org.skypro.skyshop.article.BestResultNotFound;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
@@ -60,5 +61,25 @@ public class App {
                 searchEngine.add(article1);
                 searchEngine.add(article2);
                 searchEngine.add(article3);
+
+                SearchEngine searchEngine1 = null;
+                try {
+                        searchEngine1 = new SearchEngine(3);
+                } catch (IllegalArgumentException e) {
+                        System.out.println("Ошибка создания SearchEngine " + e.getMessage());
+                }
+                if (searchEngine1 != null) {
+                        searchEngine1.add(robot);
+                        searchEngine1.add(article1);
+                        searchEngine1.add(article2);
+                        searchEngine1.add(telephone1);
+                        searchEngine1.add(telephone2);
+
+                        System.out.println(Arrays.toString(searchEngine1.search("robot")));
+                        System.out.println(Arrays.toString(searchEngine1.search("milk")));
+                        System.out.println(searchEngine1.search("robot"));
+                        System.out.println(searchEngine1.search("milk"));
+                        System.out.println(searchEngine1.search("wrhwrh"));
+                }
         }
 }

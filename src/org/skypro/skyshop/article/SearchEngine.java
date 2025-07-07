@@ -1,17 +1,15 @@
 package org.skypro.skyshop.article;
 
-import org.skypro.skyshop.product.SimpleProduct;
-import org.skypro.skyshop.product.Product;
-import org.skypro.skyshop.product.FixPriceProduct;
-import org.skypro.skyshop.product.DiscountedProduct;
-
 public class SearchEngine {
     private Searchable[] searchableItems;
     private int count;
 
-    public SearchEngine(int size) {
-        searchableItems = new Searchable[size];
-        count = 0;
+    public SearchEngine(int capacity) {
+        if (capacity < 0) {
+            throw new IllegalArgumentException("Не может быть отрицательным");
+        }
+        this.searchableItems = new Searchable[capacity];
+        this.count = 0;
     }
 
     public void add(Searchable item) {
@@ -39,4 +37,16 @@ public class SearchEngine {
         }
         return result;
     }
+
+    private int countOccurrences(String str, String substring) {
+        int count = 0;
+        int index = 0;
+
+        while ((index = str.indexOf(substring, index)) != -1) {
+            count++;
+            index += substring.length();
+        }
+        return count;
+    }
+
 }

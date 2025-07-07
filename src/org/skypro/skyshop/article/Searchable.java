@@ -11,5 +11,5 @@ public interface Searchable {
 
     default boolean contains(String query) {
         return false;
-    }
+    };
 }
