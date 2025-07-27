@@ -32,4 +32,12 @@ public class SimpleProduct extends Product {
     public boolean isSpecial() {
         return false;
     }
+    public static void main(String[] args) {
+        try {
+            SimpleProduct product = new SimpleProduct("Товар", 10); // Корректное значение
+            SimpleProduct invalidProduct = new SimpleProduct("Некорректный товар", 0); // Некорректное значение
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

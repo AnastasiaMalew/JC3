@@ -1,9 +1,9 @@
 package org.skypro.skyshop.product;
 import org.skypro.skyshop.article.Searchable;
-import org.skypro.skyshop.product.DiscountedProduct;
 
 public abstract class Product implements Searchable {
     private String name;
+    private double price;
 
     @Override
     public String getSearchTerm() {
@@ -34,4 +34,20 @@ public abstract class Product implements Searchable {
     }
 
     public abstract boolean isBetter(Searchable bestResult);
+
+    public Product(String name, double price) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Имя продукта не может быть пустым.");
+        }
+        if (price < 0) {
+            throw new IllegalArgumentException("Цена продукта не может быть отрицательной.");
+        }
+        this.name = name;
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{name='" + name + "', price=" + price + '}';
+    }
 }

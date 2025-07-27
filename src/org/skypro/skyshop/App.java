@@ -1,16 +1,15 @@
 package org.skypro.skyshop;
 
 
-import org.skypro.skyshop.article.BestResultNotFound;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
-import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.article.Searchable;
 import org.skypro.skyshop.article.Article;
 import org.skypro.skyshop.article.SearchEngine;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class App {
