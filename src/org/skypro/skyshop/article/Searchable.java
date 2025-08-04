@@ -4,12 +4,15 @@ public interface Searchable {
     String getSearchTerm();
     String getContentType();
     String getName();
+    String getSearchString();
 
-    default String getStringRepresentation() {
+
+default String getStringRepresentation() {
         return getName() + "-" + getContentType();
     }
 
     default boolean contains(String query) {
         return false;
-    };
+    }
+
 }

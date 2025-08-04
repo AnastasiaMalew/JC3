@@ -29,4 +29,9 @@ public class FixPriceProduct extends Product {
     public boolean isBetter(Searchable bestResult) {
         return false;
     }
+
+    @Override
+    public String getSearchString() {
+        return "";
+    }
 }

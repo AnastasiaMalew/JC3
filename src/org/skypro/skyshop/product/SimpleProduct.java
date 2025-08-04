@@ -40,4 +40,9 @@ public class SimpleProduct extends Product {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public String getSearchString() {
+        return "";
+    }
 }

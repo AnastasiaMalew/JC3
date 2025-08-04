@@ -1,9 +1,12 @@
 package org.skypro.skyshop.article;
 
+import java.util.Arrays;
+
 public class SearchEngine {
     private Searchable[] searchableItems;
     private int count;
 
+    // Конструктор с указанием емкости
     public SearchEngine(int capacity) {
         if (capacity < 0) {
             throw new IllegalArgumentException("Не может быть отрицательным");
@@ -12,6 +15,7 @@ public class SearchEngine {
         this.count = 0;
     }
 
+    // Метод для добавления элемента
     public void add(Searchable item) {
         if (count < searchableItems.length) {
             searchableItems[count] = item;
@@ -21,6 +25,7 @@ public class SearchEngine {
         }
     }
 
+    // Метод для поиска элементов по запросу
     public Searchable[] search(String query) {
         Searchable[] result = new Searchable[5];
         int resultCount = 0;
@@ -38,6 +43,33 @@ public class SearchEngine {
         return result;
     }
 
+    // Метод для нахождения наилучшего совпадения
+    public Searchable findBestMatch(String query) {
+        Searchable bestMatch = null;
+        int bestScore = -1; // Начальное значение для сравнения
+
+        for (Searchable item : searchableItems) {
+            if (item != null) {
+                String searchString = item.getSearchTerm();
+                int score = calculateMatchScore(query, searchString);
+
+                // Если текущий score больше, чем лучший найденный, обновляем bestMatch
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestMatch = item;
+                }
+            }
+        }
+
+        return bestMatch; // Возвращаем наиболее подходящий объект
+    }
+
+    // Метод для подсчета совпадений
+    private int calculateMatchScore(String query, String searchString) {
+        int occurrences = countOccurrences(searchString.toLowerCase(), query.toLowerCase());
+        return occurrences; // Возвращаем количество вхождений как оценку совпадения
+    }
+
     private int countOccurrences(String str, String substring) {
         int count = 0;
         int index = 0;
@@ -48,6 +80,11 @@ public class SearchEngine {
         }
         return count;
     }
-
-
+    @Override
+    public String toString () {
+        return "SearchEngine{" +
+                "searchableItems=" + Arrays.toString(searchableItems) +
+                ", currentIndex=" + count +
+                '}';
+    }
 }
