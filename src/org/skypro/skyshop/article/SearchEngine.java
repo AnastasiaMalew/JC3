@@ -80,11 +80,45 @@ public class SearchEngine {
         }
         return count;
     }
+
     @Override
-    public String toString () {
+    public String toString() {
         return "SearchEngine{" +
                 "searchableItems=" + Arrays.toString(searchableItems) +
                 ", currentIndex=" + count +
                 '}';
     }
-}
+
+    public class BestResultNotFound extends Exception {
+        public BestResultNotFound() {
+            super("No suitable search result found");
+        }
+
+        public BestResultNotFound(String message) {
+            super(message);
+        }
+    }
+
+    public Searchable searchBestMatches(String search, Searchable[] items) throws BestResultNotFound {
+        if (search == null || search.isEmpty()) {
+            throw new IllegalArgumentException("Search string cannot be null or empty");
+        }
+            Searchable bestMatch = null;
+            int maxOccurrences = 0;
+
+            for (Searchable item : items) {
+                String content = item.getSearchTerm();
+                int count = countOccurrences(content, search);
+                if (count > maxOccurrences) {
+                    maxOccurrences = count;
+                    bestMatch = item;
+                }
+            }
+
+            if (bestMatch == null || maxOccurrences == 0) {
+                throw new BestResultNotFound();
+            }
+
+            return bestMatch;
+        }
+    }
