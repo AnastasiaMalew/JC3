@@ -1,5 +1,7 @@
 package org.skypro.skyshop.product;
 
+import org.skypro.skyshop.article.Searchable;
+
 public class FixPriceProduct extends Product {
 
     private static final double FIX_PRICE = 100.0;
@@ -21,5 +23,15 @@ public class FixPriceProduct extends Product {
     @Override
     public boolean isSpecial() {
         return true;
+    }
+
+    @Override
+    public boolean isBetter(Searchable bestResult) {
+        return false;
+    }
+
+    @Override
+    public String getSearchString() {
+        return "";
     }
 }
