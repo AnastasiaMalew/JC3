@@ -5,7 +5,11 @@ import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductBasket {
+    List<Integer> list = new ArrayList<>();
     private final Product[] products;
     private int costProduct;
 
